@@ -7,12 +7,12 @@ type AcceptedProps = {
 
 type AddBRState = {
     barName: '',
-    wineListRating: '', 
-    cocktailRating: '',
-    foodRating: '',
-    atmosphereRating: '', 
-    outdoorSeating: '',
-    zipcode: '',
+    wineListRating: number, 
+    cocktailRating: number,
+    foodRating: number,
+    atmosphereRating: number, 
+    outdoorSeating: boolean,
+    zipcode: number,
     notes: '',
     username: '',
     date: '', 
@@ -23,16 +23,17 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
         super(props);
         this.state = {
             barName: '',
-            wineListRating: '',
-            cocktailRating: '',
-            foodRating: '',
-            atmosphereRating: '',
-            outdoorSeating: '',
-            zipcode: '',
+            wineListRating: 0,
+            cocktailRating: 0,
+            foodRating: 0,
+            atmosphereRating: 0,
+            outdoorSeating: false,
+            zipcode: 46201,
             notes: '',
             username: '',
             date: '',
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleSubmit(e: FormEvent) {
@@ -59,14 +60,21 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
                 'Authorization': this.props.sessionToken
             })
         })
-        .then(res => res.json)
-        .then(()=>{this.props.fetchbarReviews()} )
+        .then(res => res.json())
+        .then((data)=>{console.log(data)
+        })
     }
 
     render() {
         return(
-            <div>
-                Test
+            <div className='addBarReview'>
+                <Form onSubmit={this.handleSubmit}>
+                    <FormGroup>
+                        <Label></Label>
+                        <Input/>
+                    </FormGroup>
+
+                </Form>
             </div>
         )
     }

@@ -1,8 +1,8 @@
 import React, { Component, FormEvent } from 'react';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 type AcceptedProps = {
     updateToken: (newToken: string) => void,
-    changeView: () => void
 }
 
 type LoginState = {
@@ -17,6 +17,7 @@ export default class Login extends Component <AcceptedProps, LoginState> {
             username: '',
             password: '',
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleSubmit(e: FormEvent) {
@@ -39,12 +40,24 @@ export default class Login extends Component <AcceptedProps, LoginState> {
 
         render() {
             return (
-                <div>
-                    Test
+                <div className='Login'> 
+                    <Form onSubmit={this.handleSubmit}>
+                        <FormGroup>
+                            <Label htmlFor='username'>username</Label>
+                            <Input value={this.state.password} onChange={(e)=> this.setState({username: e.target.value})}/>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label htmlFor='password'>password</Label>
+                            <Input type='password' value={this.state.password} onChange={(e)=> this.setState({password: e.target.value})}/>
+                        </FormGroup>
+                        <br />
+                        <Button type='submit' >Log In</Button>
+                    </Form>
                 </div>
             )
     }
-}
+};
 
 
 

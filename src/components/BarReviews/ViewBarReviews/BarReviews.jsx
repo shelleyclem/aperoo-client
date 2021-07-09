@@ -2,7 +2,7 @@ import React from 'react';
 
 const ViewBarReviews = (props) => {
     
-    return props.plants.map((barReview, index) => {
+    return props.barReview.map((barReview, index) => {
         return (
             <dl key={index}>
                 <h3>{barReview.barName}</h3>
@@ -14,6 +14,8 @@ const ViewBarReviews = (props) => {
                 <dt>Notes: </dt>
                 <dd>{barReview.notes}</dd>
                 <p>Submitted by: {barReview.username} on {barReview.date}</p>
+                {/* Button for Edit Plant */}
+                {/* Button for Delete Plant */}
             </dl>
             )
         })

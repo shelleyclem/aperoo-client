@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 
-
-type AcceptedProps = {
-
+function NavBar(props) {
+    return (
+        <div>
+            <Router></Router>
+        </div>
+    )
 }
-
-export default class Navbar extends Component <AcceptedProps,>
