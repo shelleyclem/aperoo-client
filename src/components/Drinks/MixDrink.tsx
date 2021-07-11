@@ -9,12 +9,12 @@ type MixDrinkState = {
     drinkName: string,
     containsAlcohol: boolean,
     mainSpirit: string,
-    ingredients: Array, //! Array?
+    ingredients: Array, //! Array? - more specific - array of strings
     servingGlassType: string,
     garnish: string,
     notes: string,
     username: string,
-    date: string, //! Date?
+    date: Date,
 }
 
 export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState> {
@@ -22,14 +22,15 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
         super(props);
         this.state = {
             drinkName: '',
-            containsAlcohol: true,
+            containsAlcohol: false,
             mainSpirit: '',
             ingredients: [''],
             servingGlassType: '',
             garnish: '',
             notes: '',
             username: '',
-            date: '',
+            date: '', //!Figure out state for date type
+
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -72,12 +73,12 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
 
                     <FormGroup>
                         <Label htmlFor='containsAlcohol'>Contains Alcohol?</Label>
-                        <Input type='checkbox' value={this.state.containsAlcohol} onSelect={(e)=>this.setState({containsAlcohol: e.target.value})}/> //! value errors
-                    </FormGroup>
+                        <Input type='checkbox' value={this.state.containsAlcohol} onChange={(e)=>this.setState({containsAlcohol: Boolean(e.target.value)})}/>
+                    </FormGroup> //! Still throwing value error
 
                     <FormGroup>
                         <Label htmlFor='mainSpirit'>Main Spirit</Label>
-                        <Input type='text' value={this.state.mainSpirit} onChange={(e)=>this.setState({mainSpirit: e.target.value})}/> //!DataType above? 
+                        <Input type='text' value={this.state.mainSpirit} onChange={(e)=>this.setState({mainSpirit: e.target.value})}/> 
                     </FormGroup>
 
                     <FormGroup>
@@ -107,7 +108,7 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
 
                     <FormGroup>
                         <Label htmlFor='date'>Date</Label>
-                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})} />
+                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})} /> //! error with date
                     </FormGroup>
 
                     <Button type='submit'>Mix New Drink</Button>

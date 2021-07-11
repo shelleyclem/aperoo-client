@@ -14,8 +14,8 @@ const ViewBarReviews = (props) => {
                 <dt>Notes: </dt>
                 <dd>{barReview.notes}</dd>
                 <p>Submitted by: {barReview.username} on {barReview.date}</p>
-                {/* Button for Edit Plant */}
-                {/* Button for Delete Plant */}
+                {/* Button for Edit Review */}
+                {/* Button for Delete Review */}
             </dl>
             )
         })

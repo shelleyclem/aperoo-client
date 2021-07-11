@@ -3,24 +3,31 @@ import React, { Component } from 'react';
 
 
 type AcceptedProps = {
-
+    sessionToken: string
 }
 
 type DeleteBRState = {
-    
+    barName: string,
+    wineListRating: number,
+    cocktailRating: number,
+    foodRating: number,
+    atmosphereRating: number,
+    zipcode: number,
+    notes:string,
+    username: string,
+    date: Date //! type date in server. 
 }
 
 export default class DeleteBarReview extends Component<AcceptedProps, DeleteBRState> {
     constructor(props: AcceptedProps,) {
         super(props);
         this.state = {
-            
+
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDelete = this.handlea.bind(this)
     }
 
-    handleSubmit(e: FormEvent)
-    e.preventDefault()
+    handleDelete()
 }
 
 
