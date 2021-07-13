@@ -1,7 +1,6 @@
-import { render } from '@testing-library/react';
-import React, { ChangeEvent, Component } from 'react';
+import React, { Component } from 'react';
 import APIURL from '../../helpers/environment';
-import { Button } from 'reactstrap';
+
 
 
 type AcceptedProps = {
@@ -67,9 +66,9 @@ export default class DeleteBarReview extends Component<AcceptedProps, DeleteBRSt
     }
     render() {
         return (
-            <div>
-                <Button onClick={((e: any) => this.handleDelete(this.props.deleteReview.id))}>Delete Review</Button>
-            </div>
+            <>
+                
+            </>
         )
     }
 }

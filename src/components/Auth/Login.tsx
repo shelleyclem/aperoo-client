@@ -9,6 +9,7 @@ type AcceptedProps = {
 type LoginState = {
     username: string, 
     password: string,
+    role: string,
 }
 
 export default class Login extends Component <AcceptedProps, LoginState> {
@@ -17,6 +18,7 @@ export default class Login extends Component <AcceptedProps, LoginState> {
         this.state = {
             username: '',
             password: '',
+            role: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -35,8 +37,9 @@ export default class Login extends Component <AcceptedProps, LoginState> {
             headers: new Headers ({
                 'Content-Type': 'application/json'
             })
-        }) .then ((res) => res.json())
+        }).then ((res) => res.json())
         .then (data => this.props.updateToken(data.sessionToken))
+        .catch((err) => console.log(err))
         }
 
         render() {
@@ -45,7 +48,7 @@ export default class Login extends Component <AcceptedProps, LoginState> {
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup>
                             <Label htmlFor='username'>username</Label>
-                            <Input value={this.state.password} onChange={(e)=> this.setState({username: e.target.value})}/>
+                            <Input type='text' value={this.state.username} onChange={(e)=> this.setState({username: e.target.value})}/>
                         </FormGroup>
 
                         <FormGroup>

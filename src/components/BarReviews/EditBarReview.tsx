@@ -1,5 +1,6 @@
 import React, { Component, FormEvent } from 'react';
 import APIURL from '../../helpers/environment';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 type AcceptedProps = {
     sessionToken: string,
@@ -14,7 +15,7 @@ type AcceptedProps = {
         zipcode: number,
         notes: string,
         username: string,
-        date: Date
+        date: string,
     }
 }
 
@@ -29,7 +30,7 @@ type EditBRState = {
     zipcode: number,
     notes: string,
     username: string,
-    date: Date
+    date: string,
 }
 
 export default class EditBarReview extends Component<AcceptedProps, EditBRState> {
@@ -79,9 +80,61 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
     
     render() {
         return (
-            <div>
-                Test
-            </div>
+            <>
+                <Form onSubmit={this.handleUpdate}>
+                    <FormGroup>
+                        <Label htmlFor='barName'>Name of Bar or Restaurant</Label>
+                        <Input type='text' value={this.state.barName} onChange={(e)=>this.setState({barName: e.target.value})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Wine List Rating</Label>
+                        <Input type='number' max='10' value={this.state.wineListRating} onChange={(e)=>this.setState({wineListRating: Number (e.target.value)})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Cocktail Rating</Label>
+                        <Input type='number' max='10' value={this.state.cocktailRating} onChange={(e)=>this.setState({cocktailRating: Number (e.target.value)})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Food Rating</Label>
+                        <Input type='number' max='10' value={this.state.foodRating} onChange={(e)=>this.setState({foodRating: Number (e.target.value)})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Atmostphere Rating</Label>
+                        <Input type='number' max='10' value={this.state.atmosphereRating} onChange={(e)=>this.setState({atmosphereRating: Number (e.target.value)})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor='outdoorSeatng'>Outdoor Seating Available?</Label>
+                        <Input type='checkbox' value={this.state.barName} onChange={(e)=>this.setState({outdoorSeating: Boolean (e.target.value)})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Zip Code</Label>
+                        <Input type='number' value={this.state.zipcode} onChange={(e)=>this.setState({zipcode: Number (e.target.value)})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Notes</Label>
+                        <Input type='textarea' value={this.state.notes} onChange={(e)=>this.setState({notes: e.target.value})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Username</Label>
+                        <Input type='text' value={this.state.username} onChange={(e)=>this.setState({username: e.target.value})}/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label>Date</Label>
+                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})}/> 
+                    </FormGroup>
+
+                    <Button type='submit'>Add Review</Button>
+                </Form>
+            </>
         )
     }
     

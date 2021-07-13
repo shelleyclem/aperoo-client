@@ -1,6 +1,6 @@
 import React, { Component, FormEvent } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { InputType } from 'reactstrap/lib/Input';
+
 
 type AcceptedProps = {
     sessionToken: string
@@ -8,7 +8,7 @@ type AcceptedProps = {
 
 type MixDrinkState = {
     drinkName: string,
-    containsAlcohol: InputType,
+    containsAlcohol: boolean,
     mainSpirit: string,
     ingredients: string,
     servingGlassType: string,
@@ -23,7 +23,7 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
         super(props);
         this.state = {
             drinkName: '',
-            containsAlcohol: 'radio',
+            containsAlcohol: false,
             mainSpirit: '',
             ingredients: '',
             servingGlassType: '',
@@ -59,8 +59,9 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
                 'Authorization': this.props.sessionToken
             })
         }).then(res => res.json())
-        .then((data) => {console.log(data)
+        .then((json) => {console.log(json);
         })
+        .catch((err) => console.log(err))
     }
 
     render() {
@@ -72,10 +73,10 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
                         <Input type='text' value={this.state.drinkName} onChange={(e)=>this.setState({drinkName: e.target.value})}/>
                     </FormGroup>
 
-                    <FormGroup>
-                        <Label htmlFor='containsAlcohol'>Contains Alcohol?</Label>
-                        <Input type='radio' name='radio1' value={this.state.containsAlcohol} onChange={(e)=>this.setState({containsAlcohol: Boolean(e.target.value)})}/>{' '}
-                    </FormGroup> 
+                    {/* <FormGroup>
+                    <Label htmlFor='containsAlcohol'>Does it Contain Alcohol?</Label>
+                        <Input type='checkbox' value={this.state.containsAlcohol} onChange={(e)=>this.setState({containsAlcohol: Boolean (e.target.value)})}/>
+                    </FormGroup>  */}
 
                     <FormGroup>
                         <Label htmlFor='mainSpirit'>Main Spirit</Label>

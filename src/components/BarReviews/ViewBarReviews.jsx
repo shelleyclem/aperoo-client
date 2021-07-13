@@ -2,26 +2,26 @@ import React from 'react';
 import EditBarReview from './EditBarReview';
 import DeleteBarReview from './DeleteBarReview';
 import APIURL from '../../helpers/environment';
+import { Button } from 'reactstrap';
 
+// type AcceptedProps = {
+//     sessionToken: string,
+//     allBarReviews: {
+//         id: number,
+//         barName: string,
+//         wineListRating: number, 
+//         cocktailRating: number,
+//         foodRating: number,
+//         atmosphereRating: number,
+//         outdoorSeating: boolean,
+//         zipcode: number,
+//         notes: string,
+//         username: string,
+//         date: string,
+//     }
+// }
 
-type AcceptedProps = {
-    sessionToken: string,
-    allBarReviews: {
-        id: number,
-        barName: string,
-        wineListRating: number, 
-        cocktailRating: number,
-        foodRating: number,
-        atmosphereRating: number,
-        outdoorSeating: boolean,
-        zipcode: number,
-        notes: string,
-        username: string,
-        date: string,
-    }
-}
-
-const ViewBarReviews = (props: AcceptedProps) => {
+const ViewBarReviews = (props) => {
     
     fetch(`${APIURL}/barReview/all`, {
         method: 'GET',
@@ -45,11 +45,10 @@ const ViewBarReviews = (props: AcceptedProps) => {
                 <dt>Notes: </dt>
                 <dd>{barReview.notes}</dd>
                 <p>Submitted by: {barReview.username} on {barReview.date}</p>
-                <span> 
-                    {/* <button><EditBarReview/>Edit Bar Review</button> */}
-                    <DeleteBarReview />
-                </span>
-            </dl>
+                <h3>Need to edit this Review?</h3>
+                <EditBarReview />
+                    <Button onClick={((e) => this.handleDelete(this.props.deleteReview.id))}><DeleteBarReview/>Delete Review</Button>
+            </dl>     
             )
     })
 }

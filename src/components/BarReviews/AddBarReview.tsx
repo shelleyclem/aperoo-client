@@ -68,7 +68,7 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
 
     render() {
         return(
-            <div className='addBarReview'>
+            <>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor='barName'>Name of Bar or Restaurant</Label>
@@ -81,7 +81,7 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
                     </FormGroup>
 
                     <FormGroup>
-                        <Label>Cocktail Rating</Label>
+                        <Label>Cocktail Rating</Label> 
                         <Input type='number' max='10' value={this.state.cocktailRating} onChange={(e)=>this.setState({cocktailRating: Number (e.target.value)})}/>
                     </FormGroup>
 
@@ -122,7 +122,7 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
 
                     <Button type='submit'>Add Review</Button>
                 </Form>
-            </div>
+            </>
         )
     }
 }

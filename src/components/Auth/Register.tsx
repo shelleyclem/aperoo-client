@@ -43,7 +43,7 @@ export default class Register extends Component <AcceptedProps, RegisterState> {
             headers: new Headers ({
                 'Content-Type': 'application/json'
             })
-        }) .then (res => res.json())
+        }).then (res => res.json())
         .then (data => this.props.updateToken(data.sessionToken))
     }
 

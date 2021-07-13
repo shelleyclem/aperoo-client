@@ -54,15 +54,13 @@ export default class DeleteDrink extends Component<AcceptedProps, DeleteDrinkSta
                 'Content-Type': 'application.json',
                 'Authorization': this.props.sessionToken
             })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
         })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
     }
     render() {
         return (
-            <div>
-                
-            </div>
+            <div></div>
         )
     }
 }
