@@ -1,5 +1,5 @@
 import React, { Component, FormEvent } from 'react';
-
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     sessionToken: string,
@@ -19,6 +19,7 @@ type AcceptedProps = {
 }
 
 type EditBRState = {
+    id: number,
     barName: string,
     wineListRating: number,
     cocktailRating: number,
@@ -35,6 +36,7 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
     constructor(props: AcceptedProps) {
         super(props)
         this.state = {
+            id: props.updateReview.id,
             barName: props.updateReview.barName,
             wineListRating: props.updateReview.wineListRating,
             cocktailRating: props.updateReview.cocktailRating,
@@ -44,7 +46,7 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
             zipcode: props.updateReview.zipcode,
             notes: props.updateReview.notes,
             username: props.updateReview.username,
-            date: props.updateReview.date, //! figure out state for date type
+            date: props.updateReview.date, 
         }
         this.handleUpdate = this.handleUpdate.bind(this)
     }
@@ -52,7 +54,7 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
     handleUpdate(e: FormEvent) {
         e.preventDefault()
 
-        fetch(`http://localhost:5000.barReview/${this.props.updateReview.id}`, {
+        fetch(`${APIURL}/barReview/${this.props.updateReview.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 barName: this.state.barName,
@@ -72,18 +74,16 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
         })
         .then(res => res.json())
         .then((data) => console.log(data))
-        .catch(err => console.log(err))
-    }
+        .catch((err) => console.log(err))
+        }
     
     render() {
         return (
             <div>
-
+                Test
             </div>
         )
     }
-
-
     
 
 }

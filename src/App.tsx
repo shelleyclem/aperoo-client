@@ -1,38 +1,50 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Auth/Login';
-import { render } from '@testing-library/react';
 
-type AcceptedProps = {}
-
-type AppState = {
-  sessionToken: string | null
+type AcceptedProps = {
+  sessionToken: string,
 }
 
-export default class app extends Component<AcceptedProps, AppState>{
-  constructor(props: AcceptedProps)
-  super(props)
+type AppState = {
+  sessionToken: string 
+  
+}
+
+export default class App extends Component<AcceptedProps, AppState>{
+  constructor(props: AcceptedProps) {
+    super(props)
+    this.state = {
+      sessionToken: ('')
+    }
+    this.updateToken = this.updateToken.bind(this)
+  }
+
+  componentDidMount() {
+    if(localStorage.getItem('token')) {
+      this.setState({
+        sessionToken: localStorage.getItem('token')
+      })
+    }
+  }
+
+  clearToken() {
+    localStorage.clear();
+    window.location.reload()
+  }
+
+  updateToken(newToken: string) {
+    localStorage.setItem('token', newToken)
+    this.setState({
+      sessionToken: newToken
+    }, () => console.log(this.state.sessionToken))
+  }
 
   render() {
     return (
-      <div>
+      <div className='App'>
         
       </div>
     )
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <h1>Test</h1>
-//         <Login />
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-

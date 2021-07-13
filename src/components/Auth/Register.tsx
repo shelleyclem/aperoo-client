@@ -1,7 +1,6 @@
 
 import React, { Component, FormEvent } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { EnumType } from 'typescript';
 
 type AcceptedProps = {
     updateToken: (newToken: string) => void,
@@ -12,12 +11,12 @@ type RegisterState = {
     lastName: string,
     username: string,
     password: string,
-    role: 'user' //!ENUM?
+    role: string, 
 }
 
 export default class Register extends Component <AcceptedProps, RegisterState> {
-    construcor(props: AcceptedProps) {
-        super(props) //! super throwing error. Remove?
+    constructor(props: AcceptedProps) {
+        super(props) 
         this.state = {
             firstName: '',
             lastName: '',
@@ -71,7 +70,7 @@ export default class Register extends Component <AcceptedProps, RegisterState> {
                         <Label htmlFor='password'>Password</Label>
                         <Input type='password' value={this.state.password} onChange={(e)=>this.setState({password: e.target.value})}/>
                     </FormGroup>
-
+                
                     <Button type='submit'>Register</Button>
                 </Form>
             </div>

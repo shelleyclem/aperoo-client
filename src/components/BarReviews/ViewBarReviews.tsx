@@ -1,8 +1,39 @@
 import React from 'react';
+import EditBarReview from './EditBarReview';
+import DeleteBarReview from './DeleteBarReview';
+import APIURL from '../../helpers/environment';
 
-const ViewBarReviews = (props) => {
+
+type AcceptedProps = {
+    sessionToken: string,
+    allBarReviews: {
+        id: number,
+        barName: string,
+        wineListRating: number, 
+        cocktailRating: number,
+        foodRating: number,
+        atmosphereRating: number,
+        outdoorSeating: boolean,
+        zipcode: number,
+        notes: string,
+        username: string,
+        date: string,
+    }
+}
+
+const ViewBarReviews = (props: AcceptedProps) => {
     
-    return props.barReview.map((barReview, index) => {
+    fetch(`${APIURL}/barReview/all`, {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': props.sessionToken,
+        })
+    }).then(res => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err))
+
+    return props.allBarReviews.map((barReview, index) => {
         return (
             <dl key={index}>
                 <h3>{barReview.barName}</h3>
@@ -14,11 +45,13 @@ const ViewBarReviews = (props) => {
                 <dt>Notes: </dt>
                 <dd>{barReview.notes}</dd>
                 <p>Submitted by: {barReview.username} on {barReview.date}</p>
-                {/* Button for Edit Review */}
-                {/* Button for Delete Review */}
+                <span> 
+                    {/* <button><EditBarReview/>Edit Bar Review</button> */}
+                    <DeleteBarReview />
+                </span>
             </dl>
             )
-        })
+    })
 }
 
 

@@ -1,5 +1,6 @@
 import React, { Component, FormEvent } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { InputType } from 'reactstrap/lib/Input';
 
 type AcceptedProps = {
     sessionToken: string
@@ -7,14 +8,14 @@ type AcceptedProps = {
 
 type MixDrinkState = {
     drinkName: string,
-    containsAlcohol: boolean,
+    containsAlcohol: InputType,
     mainSpirit: string,
-    ingredients: Array, //! Array? - more specific - array of strings
+    ingredients: string,
     servingGlassType: string,
     garnish: string,
     notes: string,
     username: string,
-    date: Date,
+    date: string,
 }
 
 export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState> {
@@ -22,14 +23,14 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
         super(props);
         this.state = {
             drinkName: '',
-            containsAlcohol: false,
+            containsAlcohol: 'radio',
             mainSpirit: '',
-            ingredients: [''],
+            ingredients: '',
             servingGlassType: '',
             garnish: '',
             notes: '',
             username: '',
-            date: '', //!Figure out state for date type
+            date: '', 
 
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -73,8 +74,8 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
 
                     <FormGroup>
                         <Label htmlFor='containsAlcohol'>Contains Alcohol?</Label>
-                        <Input type='checkbox' value={this.state.containsAlcohol} onChange={(e)=>this.setState({containsAlcohol: Boolean(e.target.value)})}/>
-                    </FormGroup> //! Still throwing value error
+                        <Input type='radio' name='radio1' value={this.state.containsAlcohol} onChange={(e)=>this.setState({containsAlcohol: Boolean(e.target.value)})}/>{' '}
+                    </FormGroup> 
 
                     <FormGroup>
                         <Label htmlFor='mainSpirit'>Main Spirit</Label>
@@ -108,7 +109,7 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
 
                     <FormGroup>
                         <Label htmlFor='date'>Date</Label>
-                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})} /> //! error with date
+                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})} /> 
                     </FormGroup>
 
                     <Button type='submit'>Mix New Drink</Button>

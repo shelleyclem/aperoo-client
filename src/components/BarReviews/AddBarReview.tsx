@@ -15,7 +15,7 @@ type AddBRState = {
     zipcode: number,
     notes: string,
     username: string,
-    date: Date
+    date: string,
 }
 
 export default class AddBarReview extends Component <AcceptedProps, AddBRState> {
@@ -31,7 +31,7 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
             zipcode: 46201,
             notes: '',
             username: '',
-            date: '', //! figure out state for date type
+            date: '', 
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -117,7 +117,7 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
 
                     <FormGroup>
                         <Label>Date</Label>
-                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})}/> //! error with date 
+                        <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})}/> 
                     </FormGroup>
 
                     <Button type='submit'>Add Review</Button>

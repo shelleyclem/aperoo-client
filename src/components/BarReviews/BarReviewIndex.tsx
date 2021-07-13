@@ -4,19 +4,21 @@ import EditBarReview from './EditBarReview';
 import DeleteBarReview from './DeleteBarReview';
 import ViewBarReviews from './ViewBarReviews';
 
-type AcceptedProps = {
+// type AcceptedProps = {
 
-}
+// }
 
-type BRIndexState = {
+// type BRIndexState = {
 
-};
+// };
 
-export defualt class BarReviewIndex extends Component<AcceptedProps, BRIndexState> {
-    constructor(props: AcceptedProps) {
-        super(props)
-        this.state = {
+// export defualt class BarReviewIndex extends Component<AcceptedProps, BRIndexState> {
+//     constructor(props: AcceptedProps) {
+//         super(props)
+//         this.state = {
 
-        }
-    }
-}
+//         }
+//     }
+// }
+
+export {};

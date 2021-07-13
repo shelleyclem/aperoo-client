@@ -1,5 +1,6 @@
 import React, { Component, FormEvent } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 type AcceptedProps = {
     updateToken: (newToken: string) => void,
@@ -23,7 +24,7 @@ export default class Login extends Component <AcceptedProps, LoginState> {
     handleSubmit(e: FormEvent) {
         e.preventDefault()
 
-        fetch('http://localhost:5000/user/login', {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify(
                 { user: {
@@ -34,7 +35,7 @@ export default class Login extends Component <AcceptedProps, LoginState> {
             headers: new Headers ({
                 'Content-Type': 'application/json'
             })
-        }) .then (res => res.json())
+        }) .then ((res) => res.json())
         .then (data => this.props.updateToken(data.sessionToken))
         }
 
@@ -52,7 +53,7 @@ export default class Login extends Component <AcceptedProps, LoginState> {
                             <Input type='password' value={this.state.password} onChange={(e)=> this.setState({password: e.target.value})}/>
                         </FormGroup>
                         <br />
-                        <Button type='submit' >Log In</Button>
+                        <Button type='submit'>Log In</Button>
                     </Form>
                 </div>
             )
