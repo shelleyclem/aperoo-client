@@ -60,7 +60,7 @@ export default class DeleteDrink extends Component<AcceptedProps, DeleteDrinkSta
     }
     render() {
         return (
-            <div></div>
+            <div>{this.handleDelete}</div>
         )
     }
 }

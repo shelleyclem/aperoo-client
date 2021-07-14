@@ -1,4 +1,4 @@
-import { EnumType } from "typescript";
+
 
 export interface UserInfo {
     id: number | undefined,
@@ -14,7 +14,7 @@ export interface DrinkInfo {
     drinkName: string,
     containsAlcohol: boolean,
     mainSpirit: string,
-    ingredients: Array<string>,
+    ingredients: string,
     servingGlassType: string,
     garnish: string,
     notes: string,

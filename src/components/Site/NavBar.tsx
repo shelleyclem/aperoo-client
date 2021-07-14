@@ -11,8 +11,82 @@ import ViewDrinks from '../Drinks/ViewDrinks'
 type AcceptedProps = {
     sessionToken: string,
     updateToken: (newToken: string) => void,
-    clearToken: () => void
-
+    clearToken: () => void,
+    allBarReviews: {
+            id: number,
+            barName: string,
+            wineListRating: number, 
+            cocktailRating: number,
+            foodRating: number,
+            atmosphereRating: number,
+            outdoorSeating: boolean,
+            zipcode: number,
+            notes: string,
+            username: string,
+            date: string,
+        },
+        updateReview: {
+            id: number,
+            barName: string,
+            wineListRating: number,
+            cocktailRating: number,
+            foodRating: number,
+            atmosphereRating: number,
+            outdoorSeating: boolean,
+            zipcode: number,
+            notes: string,
+            username: string,
+            date: string,
+        },
+        deleteReview: {
+            id: number,
+            barName: string,
+            wineListRating: number,
+            cocktailRating: number,
+            foodRating: number,
+            atmosphereRating: number,
+            outdoorSeating: boolean,
+            zipcode: number,
+            notes: string,
+            username: string,
+            date: string,
+        },
+        allDrinks: {
+            id: number,
+            drinkName: string,
+            containsAlcohol: boolean,
+            mainSpirit: string,
+            ingredients: string,
+            servingGlassType: string,
+            garnish: string,
+            notes: string,
+            username: string,
+            date: string,
+        }, 
+        updateDrink: {
+            id: number, 
+            drinkName: string,
+            containsAlcohol: boolean,
+            mainSpirit: string,
+            ingredients: string,
+            servingGlassType: string,
+            garnish: string,
+            notes: string,
+            username: string,
+            date: string,
+        },
+        deleteDrink: {
+            id: number,
+            drinkName: string,
+            containsAlcohol: boolean,
+            mainSpirit: string,
+            ingredients: Array<string>,
+            servingGlassType: string,
+            garnish: string,
+            notes: string,
+            username: string,
+            date: string,
+        }
 }
 
 export default class SiteBar extends Component <AcceptedProps> {
@@ -20,10 +94,10 @@ export default class SiteBar extends Component <AcceptedProps> {
 
     render() {
         return (
-    <div>
+    <div className='main'>
         <div>
             <Navbar color='dark' dark expand='md'>
-                <Nav class='ml-auto'>
+                <Nav className='ml-auto'>
                     <NavItem>
                         <Link to='/login' className='site-link'>Log In</Link>
                     </NavItem>
@@ -47,14 +121,16 @@ export default class SiteBar extends Component <AcceptedProps> {
         </div>
         <div>
             <Router>
-                <Switch>
-                    <Route exact path='/login' component={Login}><Login updateToken={this.props.updateToken}/></Route>
-                    <Route exact path='/register' component={Register}><Register updateToken={this.props.updateToken}/></Route>
-                    <Route exact path='/addBarReview' component={AddBarReview}><AddBarReview sessionToken={this.props.sessionToken}/></Route>
-                    <Route exact path='/browseReviews' component={ViewBarReviews}><ViewBarReviews/></Route>
-                    <Route exact path='/mixNewDrink' component={MixDrink}><MixDrink sessionToken={this.props.sessionToken}/></Route>
-                    <Route exact path='/viewDrinks' component={ViewDrinks}><ViewDrinks sessiontoken={this.props.sessionToken}/></Route>
-                </Switch>
+                <Nav>
+                    <Switch>
+                        <Route exact path='/login' component={Login}><Login updateToken={this.props.updateToken}/></Route>
+                        <Route exact path='/register' component={Register}><Register updateToken={this.props.updateToken}/></Route>
+                        <Route exact path='/addBarReview' component={AddBarReview}><AddBarReview sessionToken={this.props.sessionToken}/></Route>
+                        <Route exact path='/browseReviews' component={ViewBarReviews}><ViewBarReviews sessionToken={this.props.sessionToken} allBarReviews={this.props.allBarReviews} updateReview={this.props.updateReview} deleteReview={this.props.deleteReview}/></Route>
+                        <Route exact path='/mixNewDrink' component={MixDrink}><MixDrink sessionToken={this.props.sessionToken}/></Route>
+                        <Route exact path='/viewDrinks' component={ViewDrinks}><ViewDrinks sessionToken={this.props.sessionToken} allDrinks={this.props.allDrinks} updateDrink={this.props.updateDrink} deleteDrink={this.props.deleteDrink}/></Route>
+                    </Switch>
+                </Nav>
 
             </Router>
         </div>

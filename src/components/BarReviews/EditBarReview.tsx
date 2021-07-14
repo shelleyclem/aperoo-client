@@ -2,6 +2,7 @@ import React, { Component, FormEvent } from 'react';
 import APIURL from '../../helpers/environment';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
+
 type AcceptedProps = {
     sessionToken: string,
     updateReview: {
@@ -131,7 +132,6 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
                         <Label>Date</Label>
                         <Input type='date' value={this.state.date} onChange={(e)=>this.setState({date: e.target.value})}/> 
                     </FormGroup>
-
                     <Button type='submit'>Add Review</Button>
                 </Form>
             </>

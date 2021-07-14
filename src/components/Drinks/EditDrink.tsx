@@ -1,7 +1,8 @@
 
-import React, { Component, FormEvent } from 'react';
+import React, { Component, FormEvent, } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import APIURL from '../../helpers/environment';
+import {RouteComponentProps} from 'react-router-dom';
 
 
 type AcceptedProps = {
@@ -74,6 +75,7 @@ export default class EditDrink extends Component<AcceptedProps, EditDrinkState> 
         })
         .then(res => res.json())
         .then((data) => console.log(data))
+        .catch((err) => console.log(err))
     }
 
     render() {
