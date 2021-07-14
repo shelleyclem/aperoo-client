@@ -64,6 +64,9 @@ export default class MixNewDrink extends Component<AcceptedProps, MixDrinkState>
         .catch((err) => console.log(err))
     }
 
+    componentDidMount() {
+    }
+
     render() {
         return(
             <div className='mixNewDrink'>

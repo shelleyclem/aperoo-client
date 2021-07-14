@@ -66,6 +66,10 @@ export default class AddBarReview extends Component <AcceptedProps, AddBRState> 
         .catch(err => console.log(err))
     }
 
+    componentDidMount() {
+        
+    }
+
     render() {
         return(
             <>

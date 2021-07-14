@@ -78,7 +78,10 @@ export default class EditBarReview extends Component<AcceptedProps, EditBRState>
         .then((data) => console.log(data))
         .catch((err) => console.log(err))
         }
-    
+        componentDidMount() {
+        
+        }
+        
     render() {
         return (
             <>

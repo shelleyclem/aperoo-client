@@ -58,6 +58,11 @@ export default class DeleteDrink extends Component<AcceptedProps, DeleteDrinkSta
         .then((res) => res.json())
         .then((data) => console.log(data))
     }
+
+    componentDidMount() {
+        this.handleDelete
+    }
+
     render() {
         return (
             <div>{this.handleDelete}</div>

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import APIURL from '../../helpers/environment';
 
-
-
 type AcceptedProps = {
     sessionToken: string 
     deleteReview: {
@@ -64,6 +62,11 @@ export default class DeleteBarReview extends Component<AcceptedProps, DeleteBRSt
         .then((data) => console.log(data))
         
     }
+
+    componentDidMount() {
+        this.handleDelete
+    }
+
     render() {
         return (
             <>

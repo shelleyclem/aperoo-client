@@ -78,6 +78,10 @@ export default class EditDrink extends Component<AcceptedProps, EditDrinkState> 
         .catch((err) => console.log(err))
     }
 
+    componentDidMount() {
+        
+    }
+
     render() {
         return(
             <div>

@@ -91,6 +91,9 @@ type AcceptedProps = {
 
 export default class SiteBar extends Component <AcceptedProps> {
 
+    componentDidMount() {
+    }
+
 
     render() {
         return (
